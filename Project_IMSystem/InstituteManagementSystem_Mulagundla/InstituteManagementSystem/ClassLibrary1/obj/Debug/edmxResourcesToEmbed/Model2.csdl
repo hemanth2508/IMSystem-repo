@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IMSystemModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminUser">
+    <Key>
+      <PropertyRef Name="AdminUserListId" />
+    </Key>
+    <Property Name="AdminUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AdminUserListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Cours">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fees" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FacultyId" Type="Int32" Nullable="false" />
+    <Property Name="CourseStartDate" Type="DateTime" Precision="3" />
+    <Property Name="CourseEndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FAcultyUser" Relationship="Self.FK_Courses_FAcultyUsers" FromRole="Courses" ToRole="FAcultyUsers" />
+  </EntityType>
+  <EntityType Name="FAcultyUser">
+    <Key>
+      <PropertyRef Name="FacultyUsersId" />
+    </Key>
+    <Property Name="FacultyUsersId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Experience" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Achievements" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Acitve" Type="Boolean" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_FAcultyUsers" FromRole="FAcultyUsers" ToRole="Courses" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="Fame" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lame" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Forgot_Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LoginId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Qualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Courses_FAcultyUsers">
+    <End Role="FAcultyUsers" Type="Self.FAcultyUser" Multiplicity="1" />
+    <End Role="Courses" Type="Self.Cours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAcultyUsers">
+        <PropertyRef Name="FacultyUsersId" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="FacultyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IMSystemEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+    <EntitySet Name="Courses" EntityType="Self.Cours" />
+    <EntitySet Name="FAcultyUsers" EntityType="Self.FAcultyUser" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Courses_FAcultyUsers" Association="Self.FK_Courses_FAcultyUsers">
+      <End Role="FAcultyUsers" EntitySet="FAcultyUsers" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <FunctionImport Name="SP_Login" ReturnType="Collection(IMSystemModel1.SP_Login_Result)">
+      <Parameter Name="UserId" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SP_Login_Result">
+    <Property Type="String" Name="Fame" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Lame" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Forgot_Question" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="Answer" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="Comments" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="LoginId" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="password" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Qualification" Nullable="true" />
+  </ComplexType>
+</Schema>

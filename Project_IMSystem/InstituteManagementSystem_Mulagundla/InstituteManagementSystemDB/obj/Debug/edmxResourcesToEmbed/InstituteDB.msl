@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IMSystemModelStoreContainer" CdmEntityContainer="IMSystemEntities">
+    <EntitySetMapping Name="AdminUsers">
+      <EntityTypeMapping TypeName="IMSystemModel.AdminUser">
+        <MappingFragment StoreEntitySet="AdminUsers">
+          <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+          <ScalarProperty Name="AdminUserListId" ColumnName="AdminUserListId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="IMSystemModel.Cours">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Fees" ColumnName="Fees" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+          <ScalarProperty Name="CourseStartDate" ColumnName="CourseStartDate" />
+          <ScalarProperty Name="CourseEndDate" ColumnName="CourseEndDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAcultyUsers">
+      <EntityTypeMapping TypeName="IMSystemModel.FAcultyUser">
+        <MappingFragment StoreEntitySet="FAcultyUsers">
+          <ScalarProperty Name="FacultyUsersId" ColumnName="FacultyUsersId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Experience" ColumnName="Experience" />
+          <ScalarProperty Name="Achievements" ColumnName="Achievements" />
+          <ScalarProperty Name="Acitve" ColumnName="Acitve" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IMSystemModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="LName" ColumnName="LName" />
+          <ScalarProperty Name="FName" ColumnName="FName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Forgot_Question" ColumnName="Forgot_Question" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserVSCourses">
+      <EntityTypeMapping TypeName="IMSystemModel.UserVSCourse">
+        <MappingFragment StoreEntitySet="UserVSCourse">
+          <ScalarProperty Name="CoureseId" ColumnName="CoureseId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserVSCourseId" ColumnName="UserVSCourseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

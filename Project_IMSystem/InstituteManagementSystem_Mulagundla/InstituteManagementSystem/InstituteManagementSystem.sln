@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "InstituteManagementSystem", "http://localhost:49440", "{A48E4DDA-40EB-4430-BF09-636C98006654}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{bfaebfc7-bbdc-49b7-8f53-e45c64e61b98}|InstituteManagementSystemDB.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_49440"
+		Debug.AspNetCompiler.PhysicalPath = "..\InstituteManagementSystem\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49440\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_49440"
+		Release.AspNetCompiler.PhysicalPath = "..\InstituteManagementSystem\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_49440\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\InstituteManagementSystem\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstituteManagementSystemDB", "InstituteManagementSystemDB\InstituteManagementSystemDB.csproj", "{BFAEBFC7-BBDC-49B7-8F53-E45C64E61B98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A48E4DDA-40EB-4430-BF09-636C98006654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A48E4DDA-40EB-4430-BF09-636C98006654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A48E4DDA-40EB-4430-BF09-636C98006654}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A48E4DDA-40EB-4430-BF09-636C98006654}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{BFAEBFC7-BBDC-49B7-8F53-E45C64E61B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFAEBFC7-BBDC-49B7-8F53-E45C64E61B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFAEBFC7-BBDC-49B7-8F53-E45C64E61B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFAEBFC7-BBDC-49B7-8F53-E45C64E61B98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IMSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdminUsers">
+    <Key>
+      <PropertyRef Name="AdminUserListId" />
+    </Key>
+    <Property Name="AdminUserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdminUserListId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Fees" Type="money" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FacultyId" Type="int" Nullable="false" />
+    <Property Name="CourseStartDate" Type="datetime" />
+    <Property Name="CourseEndDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FAcultyUsers">
+    <Key>
+      <PropertyRef Name="FacultyUsersId" />
+    </Key>
+    <Property Name="FacultyUsersId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Experience" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Achievements" Type="nvarchar(max)" />
+    <Property Name="Acitve" Type="bit" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="FName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="Phone" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Forgot_Question" Type="text" Nullable="false" />
+    <Property Name="Answer" Type="text" Nullable="false" />
+    <Property Name="Comments" Type="varchar" MaxLength="200" />
+    <Property Name="LoginId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Qualification" Type="nvarchar(max)" />
+    <Property Name="UserType" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserVSCourse">
+    <Key>
+      <PropertyRef Name="UserVSCourseId" />
+    </Key>
+    <Property Name="UserVSCourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CoureseId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Courses_FAcultyUsers">
+    <End Role="FAcultyUsers" Type="Self.FAcultyUsers" Multiplicity="1" />
+    <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAcultyUsers">
+        <PropertyRef Name="FacultyUsersId" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="FacultyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Course_1">
+    <End Role="UserVSCourse" Type="Self.UserVSCourse" Multiplicity="1" />
+    <End Role="UserVSCourse1" Type="Self.UserVSCourse" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserVSCourse">
+        <PropertyRef Name="UserVSCourseId" />
+      </Principal>
+      <Dependent Role="UserVSCourse1">
+        <PropertyRef Name="UserVSCourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IMSystemModelStoreContainer">
+    <EntitySet Name="AdminUsers" EntityType="Self.AdminUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FAcultyUsers" EntityType="Self.FAcultyUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserVSCourse" EntityType="Self.UserVSCourse" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Courses_FAcultyUsers" Association="Self.FK_Courses_FAcultyUsers">
+      <End Role="FAcultyUsers" EntitySet="FAcultyUsers" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Course_1" Association="Self.FK_User_Course_1">
+      <End Role="UserVSCourse" EntitySet="UserVSCourse" />
+      <End Role="UserVSCourse1" EntitySet="UserVSCourse" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "InstituteManagementSystem", "InstituteManagementSystem\", "{FE7D57F6-B0EF-414D-AE7C-A526DC56FE97}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		ProjectReferences = "{bfaebfc7-bbdc-49b7-8f53-e45c64e61b98}|InstituteManagementSystemDB.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/InstituteManagementSystem"
+		Debug.AspNetCompiler.PhysicalPath = "D:\softwares\TrainingJune\HemanthProj\InstituteManagementSystem\InstituteManagementSystem\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\InstituteManagementSystem\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/InstituteManagementSystem"
+		Release.AspNetCompiler.PhysicalPath = "D:\softwares\TrainingJune\HemanthProj\InstituteManagementSystem\InstituteManagementSystem\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\InstituteManagementSystem\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "4835"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstituteManagementSystemDB", "InstituteManagementSystemDB\InstituteManagementSystemDB.csproj", "{BFAEBFC7-BBDC-49B7-8F53-E45C64E61B98}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE7D57F6-B0EF-414D-AE7C-A526DC56FE97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE7D57F6-B0EF-414D-AE7C-A526DC56FE97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE7D57F6-B0EF-414D-AE7C-A526DC56FE97}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE7D57F6-B0EF-414D-AE7C-A526DC56FE97}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{BFAEBFC7-BBDC-49B7-8F53-E45C64E61B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFAEBFC7-BBDC-49B7-8F53-E45C64E61B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFAEBFC7-BBDC-49B7-8F53-E45C64E61B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFAEBFC7-BBDC-49B7-8F53-E45C64E61B98}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

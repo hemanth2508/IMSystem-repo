@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IMSystemModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="IMSystemEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminUsers" EntityType="IMSystemModel.AdminUser" />
+    <EntitySet Name="Courses" EntityType="IMSystemModel.Cours" />
+    <EntitySet Name="FAcultyUsers" EntityType="IMSystemModel.FAcultyUser" />
+    <EntitySet Name="Users" EntityType="IMSystemModel.User" />
+    <EntitySet Name="UserVSCourses" EntityType="IMSystemModel.UserVSCourse" />
+    <AssociationSet Name="FK_Courses_FAcultyUsers" Association="IMSystemModel.FK_Courses_FAcultyUsers">
+      <End Role="FAcultyUsers" EntitySet="FAcultyUsers" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Course_1" Association="IMSystemModel.FK_User_Course_1">
+      <End Role="UserVSCourse" EntitySet="UserVSCourses" />
+      <End Role="UserVSCourse1" EntitySet="UserVSCourses" />
+    </AssociationSet>
+    <EntitySet Name="MarqeeTexts" EntityType="IMSystemModel.MarqeeText" />
+  </EntityContainer>
+  <EntityType Name="AdminUser">
+    <Key>
+      <PropertyRef Name="AdminUserListId" />
+    </Key>
+    <Property Name="AdminUserId" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="AdminUserListId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Cours">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Fees" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="FacultyId" Type="Int32" Nullable="false" />
+    <Property Name="CourseStartDate" Type="DateTime" Precision="3" />
+    <Property Name="CourseEndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FAcultyUser" Relationship="IMSystemModel.FK_Courses_FAcultyUsers" FromRole="Courses" ToRole="FAcultyUsers" />
+    <Property Type="Int32" Name="NoOfSeats" Nullable="false" />
+    <Property Type="Time" Name="StartTime" Precision="7" />
+    <Property Type="Time" Name="EndTime" Precision="7" />
+  </EntityType>
+  <EntityType Name="FAcultyUser">
+    <Key>
+      <PropertyRef Name="FacultyUsersId" />
+    </Key>
+    <Property Name="FacultyUsersId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Experience" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Achievements" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Acitve" Type="Boolean" />
+    <NavigationProperty Name="Courses" Relationship="IMSystemModel.FK_Courses_FAcultyUsers" FromRole="FAcultyUsers" ToRole="Courses" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="FName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="LName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Forgot_Question" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Answer" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Comments" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+    <Property Name="LoginId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Qualification" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="UserType" Type="Int16" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserVSCourse">
+    <Key>
+      <PropertyRef Name="UserVSCourseId" />
+    </Key>
+    <Property Name="UserVSCourseId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="CoureseId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="UserVSCourse1" Relationship="IMSystemModel.FK_User_Course_1" FromRole="UserVSCourse" ToRole="UserVSCourse1" />
+    <NavigationProperty Name="UserVSCourse2" Relationship="IMSystemModel.FK_User_Course_1" FromRole="UserVSCourse1" ToRole="UserVSCourse" />
+  </EntityType>
+  <Association Name="FK_Courses_FAcultyUsers">
+    <End Role="FAcultyUsers" Type="IMSystemModel.FAcultyUser" Multiplicity="1" />
+    <End Role="Courses" Type="IMSystemModel.Cours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAcultyUsers">
+        <PropertyRef Name="FacultyUsersId" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="FacultyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Course_1">
+    <End Role="UserVSCourse" Type="IMSystemModel.UserVSCourse" Multiplicity="1" />
+    <End Role="UserVSCourse1" Type="IMSystemModel.UserVSCourse" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserVSCourse">
+        <PropertyRef Name="UserVSCourseId" />
+      </Principal>
+      <Dependent Role="UserVSCourse1">
+        <PropertyRef Name="UserVSCourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MarqeeText">
+    <Key>
+      <PropertyRef Name="MarqeeTextId" />
+    </Key>
+    <Property Type="Int32" Name="MarqeeTextId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="MarqueeText" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

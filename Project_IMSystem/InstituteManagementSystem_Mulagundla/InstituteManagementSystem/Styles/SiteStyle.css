@@ -1,0 +1,143 @@
+﻿body {
+   vertical-align: middle;
+
+}
+.rcorners1 {
+    border-radius: 10px;
+    background: green;
+    padding: 3px; 
+    width: 100%;
+    height: 100%;    
+}
+.Headerrcorners {
+    border-radius: 10px;
+    background: white;
+    width: 100%;
+    height: 100%;    
+}
+.bodycorners {
+    border-radius: 10px;
+    background: white;
+    width: 100%;
+    height: 100%;    
+}
+.Logincorners {
+    border-radius: 10px;
+     background: white;
+    border-color: greenyellow;
+    border-width:thick;
+      text-align:center;
+      border:double;
+       
+}
+.ui-dialog-titlebar-close {
+    /* Default image */
+    background-image:url('http://www.charlottemotorspeedway.com/images/xyz.png'); width: 30px !important; height: 24px !important; top: 40% !important 
+}
+/*.ui-dialog-titlebar-close { width: 30px !important; height: 24px !important; top: 40% !important }*/
+.HeaderStyle {
+    font-family:Colonna MT;
+    font-size:60px;
+    font-variant-caps:all-petite-caps;
+    color: #000080
+}
+.HeaderAddressStyle {
+    font-family:Colonna MT;
+    font-size:small;
+    font-variant-caps:all-petite-caps;
+    color: #000080
+}
+.DisplayTextStyle {
+    font-family:Colonna MT;
+    font-size:large;
+    font-variant-caps:all-petite-caps;
+    color: #000080
+}
+.TextBoxClass {
+    -webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+.block {
+     background:#ececec;
+}
+.button {
+  display: inline-block;
+  padding: 3px 10px;
+ font-family:Colonna MT;
+    font-size:large;
+    font-variant-caps:all-petite-caps;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: greenyellow;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px #999;
+}
+
+input.button:hover {background-color: #3e8e41}
+
+input.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}
+
+input:required:invalid, input:focus:invalid {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAeVJREFUeNqkU01oE1EQ/mazSTdRmqSxLVSJVKU9RYoHD8WfHr16kh5EFA8eSy6hXrwUPBSKZ6E9V1CU4tGf0DZWDEQrGkhprRDbCvlpavan3ezu+LLSUnADLZnHwHvzmJlvvpkhZkY7IqFNaTuAfPhhP/8Uo87SGSaDsP27hgYM/lUpy6lHdqsAtM+BPfvqKp3ufYKwcgmWCug6oKmrrG3PoaqngWjdd/922hOBs5C/jJA6x7AiUt8VYVUAVQXXShfIqCYRMZO8/N1N+B8H1sOUwivpSUSVCJ2MAjtVwBAIdv+AQkHQqbOgc+fBvorjyQENDcch16/BtkQdAlC4E6jrYHGgGU18Io3gmhzJuwub6/fQJYNi/YBpCifhbDaAPXFvCBVxXbvfbNGFeN8DkjogWAd8DljV3KRutcEAeHMN/HXZ4p9bhncJHCyhNx52R0Kv/XNuQvYBnM+CP7xddXL5KaJw0TMAF8qjnMvegeK/SLHubhpKDKIrJDlvXoMX3y9xcSMZyBQ+tpyk5hzsa2Ns7LGdfWdbL6fZvHn92d7dgROH/730YBLtiZmEdGPkFnhX4kxmjVe2xgPfCtrRd6GHRtEh9zsL8xVe+pwSzj+OtwvletZZ/wLeKD71L+ZeHHWZ/gowABkp7AwwnEjFAAAAAElFTkSuQmCC);
+    background-position: right top;
+    background-repeat: no-repeat;
+    -moz-box-shadow: none;
+  }
+  input:required:valid {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAepJREFUeNrEk79PFEEUx9/uDDd7v/AAQQnEQokmJCRGwc7/QeM/YGVxsZJQYI/EhCChICYmUJigNBSGzobQaI5SaYRw6imne0d2D/bYmZ3dGd+YQKEHYiyc5GUyb3Y+77vfeWNpreFfhvXfAWAAJtbKi7dff1rWK9vPHx3mThP2Iaipk5EzTg8Qmru38H7izmkFHAF4WH1R52654PR0Oamzj2dKxYt/Bbg1OPZuY3d9aU82VGem/5LtnJscLxWzfzRxaWNqWJP0XUadIbSzu5DuvUJpzq7sfYBKsP1GJeLB+PWpt8cCXm4+2+zLXx4guKiLXWA2Nc5ChOuacMEPv20FkT+dIawyenVi5VcAbcigWzXLeNiDRCdwId0LFm5IUMBIBgrp8wOEsFlfeCGm23/zoBZWn9a4C314A1nCoM1OAVccuGyCkPs/P+pIdVIOkG9pIh6YlyqCrwhRKD3GygK9PUBImIQQxRi4b2O+JcCLg8+e8NZiLVEygwCrWpYF0jQJziYU/ho2TUuCPTn8hHcQNuZy1/94sAMOzQHDeqaij7Cd8Dt8CatGhX3iWxgtFW/m29pnUjR7TSQcRCIAVW1FSr6KAVYdi+5Pj8yunviYHq7f72po3Y9dbi7CxzDO1+duzCXH9cEPAQYAhJELY/AqBtwAAAAASUVORK5CYII=);
+    background-position: right top;
+    background-repeat: no-repeat;
+  }
+
+  /*TabStyle*/
+  body {
+  background: #ececec;
+  font-family: sans-serif;
+}
+.wrapper {
+  background: #ececec;
+  margin: auto;
+  padding: 1em;
+  width: 100%;
+}
+ul.tabs {
+  list-style-type: none;
+  margin: 0;
+  padding: 1em;
+}
+ul.tabs li {
+  border: gray solid 1px;
+  border-bottom: none;
+  float: left;
+  margin: 0 .25em 0 0;
+  padding: .25em .5em;
+}
+ul.tabs li a {
+  color: gray;
+  font-weight: bold;
+  text-decoration: none;
+}
+ul.tabs li.active {
+  background: gray;
+}
+ul.tabs li.active a {
+  color: white;
+}
+.clr {
+  clear: both;
+}
+article {
+  border-top: None;
+  padding: 0 1em;
+  background:#ececec;
+}
+  /*Tabstyle*/

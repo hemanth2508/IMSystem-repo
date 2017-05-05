@@ -1,0 +1,10 @@
+C:\Pro\final\InstituteManagementSystem (2)\InstituteManagementSystem\InstituteManagementSystemDB\bin\Release\InstituteManagementSystemDB.dll.config
+C:\Pro\final\InstituteManagementSystem (2)\InstituteManagementSystem\InstituteManagementSystemDB\bin\Release\InstituteManagementSystemDB.dll
+C:\Pro\final\InstituteManagementSystem (2)\InstituteManagementSystem\InstituteManagementSystemDB\bin\Release\InstituteManagementSystemDB.pdb
+C:\Pro\final\InstituteManagementSystem (2)\InstituteManagementSystem\InstituteManagementSystemDB\bin\Release\EntityFramework.dll
+C:\Pro\final\InstituteManagementSystem (2)\InstituteManagementSystem\InstituteManagementSystemDB\bin\Release\EntityFramework.SqlServer.dll
+C:\Pro\final\InstituteManagementSystem (2)\InstituteManagementSystem\InstituteManagementSystemDB\bin\Release\EntityFramework.xml
+C:\Pro\final\InstituteManagementSystem (2)\InstituteManagementSystem\InstituteManagementSystemDB\bin\Release\EntityFramework.SqlServer.xml
+C:\Pro\final\InstituteManagementSystem (2)\InstituteManagementSystem\InstituteManagementSystemDB\obj\Release\InstituteManagementSystemDB.csprojResolveAssemblyReference.cache
+C:\Pro\final\InstituteManagementSystem (2)\InstituteManagementSystem\InstituteManagementSystemDB\obj\Release\InstituteManagementSystemDB.dll
+C:\Pro\final\InstituteManagementSystem (2)\InstituteManagementSystem\InstituteManagementSystemDB\obj\Release\InstituteManagementSystemDB.pdb

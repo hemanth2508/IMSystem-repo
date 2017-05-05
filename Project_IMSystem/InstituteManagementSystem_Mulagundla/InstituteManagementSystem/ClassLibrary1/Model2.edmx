@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IMSystemModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminUsers">
+          <Key>
+            <PropertyRef Name="AdminUserListId" />
+          </Key>
+          <Property Name="AdminUserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminUserListId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fees" Type="money" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FacultyId" Type="int" Nullable="false" />
+          <Property Name="CourseStartDate" Type="datetime" />
+          <Property Name="CourseEndDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FAcultyUsers">
+          <Key>
+            <PropertyRef Name="FacultyUsersId" />
+          </Key>
+          <Property Name="FacultyUsersId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Experience" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Achievements" Type="nvarchar(max)" />
+          <Property Name="Acitve" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="Fame" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lame" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Forgot_Question" Type="text" Nullable="false" />
+          <Property Name="Answer" Type="text" Nullable="false" />
+          <Property Name="Comments" Type="varchar" MaxLength="200" />
+          <Property Name="LoginId" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Qualification" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_Courses_FAcultyUsers">
+          <End Role="FAcultyUsers" Type="Self.FAcultyUsers" Multiplicity="1" />
+          <End Role="Courses" Type="Self.Courses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FAcultyUsers">
+              <PropertyRef Name="FacultyUsersId" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="FacultyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserId" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="IMSystemModel1StoreContainer">
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAcultyUsers" EntityType="Self.FAcultyUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Courses_FAcultyUsers" Association="Self.FK_Courses_FAcultyUsers">
+            <End Role="FAcultyUsers" EntitySet="FAcultyUsers" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IMSystemModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="AdminUserListId" />
+          </Key>
+          <Property Name="AdminUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdminUserListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fees" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FacultyId" Type="Int32" Nullable="false" />
+          <Property Name="CourseStartDate" Type="DateTime" Precision="3" />
+          <Property Name="CourseEndDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FAcultyUser" Relationship="Self.FK_Courses_FAcultyUsers" FromRole="Courses" ToRole="FAcultyUsers" />
+        </EntityType>
+        <EntityType Name="FAcultyUser">
+          <Key>
+            <PropertyRef Name="FacultyUsersId" />
+          </Key>
+          <Property Name="FacultyUsersId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Experience" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Achievements" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Acitve" Type="Boolean" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_FAcultyUsers" FromRole="FAcultyUsers" ToRole="Courses" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="Fame" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lame" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Forgot_Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LoginId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Qualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Courses_FAcultyUsers">
+          <End Role="FAcultyUsers" Type="Self.FAcultyUser" Multiplicity="1" />
+          <End Role="Courses" Type="Self.Cours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FAcultyUsers">
+              <PropertyRef Name="FacultyUsersId" />
+            </Principal>
+            <Dependent Role="Courses">
+              <PropertyRef Name="FacultyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IMSystemEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+          <EntitySet Name="Courses" EntityType="Self.Cours" />
+          <EntitySet Name="FAcultyUsers" EntityType="Self.FAcultyUser" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Courses_FAcultyUsers" Association="Self.FK_Courses_FAcultyUsers">
+            <End Role="FAcultyUsers" EntitySet="FAcultyUsers" />
+            <End Role="Courses" EntitySet="Courses" />
+          </AssociationSet>
+          <FunctionImport Name="SP_Login" ReturnType="Collection(IMSystemModel1.SP_Login_Result)">
+            <Parameter Name="UserId" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_Login_Result">
+          <Property Type="String" Name="Fame" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Lame" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Forgot_Question" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="Answer" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="Comments" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="LoginId" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="String" Name="Qualification" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IMSystemModel1StoreContainer" CdmEntityContainer="IMSystemEntities1">
+          <EntitySetMapping Name="AdminUsers">
+            <EntityTypeMapping TypeName="IMSystemModel1.AdminUser">
+              <MappingFragment StoreEntitySet="AdminUsers">
+                <ScalarProperty Name="AdminUserId" ColumnName="AdminUserId" />
+                <ScalarProperty Name="AdminUserListId" ColumnName="AdminUserListId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="IMSystemModel1.Cours">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="Fees" ColumnName="Fees" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FacultyId" ColumnName="FacultyId" />
+                <ScalarProperty Name="CourseStartDate" ColumnName="CourseStartDate" />
+                <ScalarProperty Name="CourseEndDate" ColumnName="CourseEndDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAcultyUsers">
+            <EntityTypeMapping TypeName="IMSystemModel1.FAcultyUser">
+              <MappingFragment StoreEntitySet="FAcultyUsers">
+                <ScalarProperty Name="FacultyUsersId" ColumnName="FacultyUsersId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+                <ScalarProperty Name="Achievements" ColumnName="Achievements" />
+                <ScalarProperty Name="Acitve" ColumnName="Acitve" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="IMSystemModel1.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Fame" ColumnName="Fame" />
+                <ScalarProperty Name="Lame" ColumnName="Lame" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Forgot_Question" ColumnName="Forgot_Question" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Login" FunctionName="IMSystemModel1.Store.SP_Login">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMSystemModel1.SP_Login_Result">
+                <ScalarProperty Name="Fame" ColumnName="Fame" />
+                <ScalarProperty Name="Lame" ColumnName="Lame" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Forgot_Question" ColumnName="Forgot_Question" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

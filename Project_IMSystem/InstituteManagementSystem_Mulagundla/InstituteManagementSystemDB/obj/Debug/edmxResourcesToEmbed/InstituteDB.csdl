@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IMSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminUser">
+    <Key>
+      <PropertyRef Name="AdminUserListId" />
+    </Key>
+    <Property Name="AdminUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AdminUserListId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="Cours">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Fees" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FacultyId" Type="Int32" Nullable="false" />
+    <Property Name="CourseStartDate" Type="DateTime" Precision="3" />
+    <Property Name="CourseEndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="FAcultyUser" Relationship="Self.FK_Courses_FAcultyUsers" FromRole="Courses" ToRole="FAcultyUsers" />
+  </EntityType>
+  <EntityType Name="FAcultyUser">
+    <Key>
+      <PropertyRef Name="FacultyUsersId" />
+    </Key>
+    <Property Name="FacultyUsersId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Experience" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Achievements" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Acitve" Type="Boolean" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Courses_FAcultyUsers" FromRole="FAcultyUsers" ToRole="Courses" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="LoginId" />
+    </Key>
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Forgot_Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LoginId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Qualification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserType" Type="Int16" Nullable="false" />
+    <Property Name="FName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Courses_FAcultyUsers">
+    <End Role="FAcultyUsers" Type="Self.FAcultyUser" Multiplicity="1" />
+    <End Role="Courses" Type="Self.Cours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAcultyUsers">
+        <PropertyRef Name="FacultyUsersId" />
+      </Principal>
+      <Dependent Role="Courses">
+        <PropertyRef Name="FacultyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IMSystemEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+    <EntitySet Name="Courses" EntityType="Self.Cours" />
+    <EntitySet Name="FAcultyUsers" EntityType="Self.FAcultyUser" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Courses_FAcultyUsers" Association="Self.FK_Courses_FAcultyUsers">
+      <End Role="FAcultyUsers" EntitySet="FAcultyUsers" />
+      <End Role="Courses" EntitySet="Courses" />
+    </AssociationSet>
+    <EntitySet Name="UserVSCourses" EntityType="IMSystemModel.UserVSCourse" />
+    <AssociationSet Name="FK_User_Course_1" Association="IMSystemModel.FK_User_Course_1">
+      <End Role="UserVSCourse" EntitySet="UserVSCourses" />
+      <End Role="UserVSCourse1" EntitySet="UserVSCourses" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserVSCourse">
+    <Key>
+      <PropertyRef Name="UserVSCourseId" />
+    </Key>
+    <Property Name="UserVSCourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CoureseId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="UserVSCourse1" Relationship="IMSystemModel.FK_User_Course_1" FromRole="UserVSCourse" ToRole="UserVSCourse1" />
+    <NavigationProperty Name="UserVSCourse2" Relationship="IMSystemModel.FK_User_Course_1" FromRole="UserVSCourse1" ToRole="UserVSCourse" />
+  </EntityType>
+  <Association Name="FK_User_Course_1">
+    <End Type="IMSystemModel.UserVSCourse" Role="UserVSCourse" Multiplicity="1" />
+    <End Type="IMSystemModel.UserVSCourse" Role="UserVSCourse1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UserVSCourse">
+        <PropertyRef Name="UserVSCourseId" />
+      </Principal>
+      <Dependent Role="UserVSCourse1">
+        <PropertyRef Name="UserVSCourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
